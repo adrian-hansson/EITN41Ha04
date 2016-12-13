@@ -84,7 +84,7 @@ public class B3 {
 		return octetString;
 	}
 	
-	public void run(){
+	public String run(){
 		byte[] answer = new byte[0];
 		try {
 			answer = MGF1(mgfSeed, maskLen, new BigInteger("20"));
@@ -92,7 +92,9 @@ public class B3 {
 			e.printStackTrace();
 		}
 		//byte[] answerCut = Arrays.copyOfRange(answer, 0, maskLen.intValue());
-		System.out.println("ANSWER (maskLen bytes string): "+ byteToHex(answer));
+		String returnAnswer = byteToHex(answer);
+		System.out.println("ANSWER (maskLen bytes string): "+ returnAnswer);
+		return returnAnswer;
 	}
 
 	//https://tools.ietf.org/html/rfc8017#appendix-B.2.1
