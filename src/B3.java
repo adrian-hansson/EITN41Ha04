@@ -29,25 +29,13 @@ public class B3 {
 		
 		int digestLength = 0;
 		int ceil = (maskLen.intValue() + hLen.intValue() - 1) / hLen.intValue();
-		//for(int counter = 0; counter <= Math.ceil(maskLen.divide(hLen).intValue()) - 1; counter++){
 		for(int counter = 0; counter < ceil; counter++){
-			System.out.println("Counter at start of loop: "+counter);
 			byte[] C = I2OSP(counter, new BigInteger("4"));
 			byte[] hashInput = combineByteArrays(hexToByte(mgfSeed), C);
 			T = combineByteArrays( T, Hash( hashInput ) );
-			//System.out.println("Counter="+counter+", "+Arrays.toString(T));
 		}
-		System.out.println("T before cut: " + Arrays.toString(T));
-		byte[] out = new byte[maskLen.intValue()];
-		//System.arraycopy(T, 0, out, 0, maskLen.intValue());
-		out = Arrays.copyOfRange(T, 0, maskLen.intValue()-1);
-		System.out.println("Out: " + Arrays.toString(out));
-		
 		byte[] answerCut = Arrays.copyOfRange(T, 0, maskLen.intValue());
-		
 		return answerCut;
-		//return T;
-		//return out;
 	}
 	
 	public String byteToHex(byte[] b){

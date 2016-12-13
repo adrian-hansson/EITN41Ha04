@@ -79,14 +79,7 @@ public class B4 {
 		}
 		
 		//f
-		byte[] maskedDB = new byte[DB.length];//DB ^ dbMask;
-		System.out.println("DB: "+DB.length);
-		System.out.println("dbMask: "+dbMask.length);
-		int forLi = answerLength-hLen-1;
-		System.out.println("For limit: "+forLi);
-		for(int i = 0; i < answerLength-hLen-1; i++){
-			maskedDB[i] = (byte) (DB[i] ^ dbMask[i]);
-		}
+		byte[] maskedDB = xor(DB, dbMask);
 		
 		//g
 		byte[] seedMask = new byte[0];
@@ -97,20 +90,27 @@ public class B4 {
 		}
 		
 		//h
-		byte[] maskedSeed = new byte[seedBytes.length];
-		for(int i = 0; i < hLen; i++){
-			maskedSeed[i] = (byte) (seedBytes[i] ^ seedMask[i]);
-		}
+		byte[] maskedSeed = xor(seedBytes, seedMask);
 		
 		//i
-		System.out.println("maskedSeed into EM: "+Arrays.toString(maskedSeed));
-		System.out.println("maskedDB into EM: "+Arrays.toString(maskedDB));
+		System.out.println("maskedSeed into EM: "+Arrays.toString(maskedSeed) + ",length: "+maskedSeed.length);
+		System.out.println("maskedDB into EM: "+Arrays.toString(maskedDB) + ",length: "+maskedDB.length);
 		byte[] EM = combineByteArrays(new byte[1], maskedSeed);
 		EM = combineByteArrays(EM, maskedDB);
+		
+		//1+20+107= 1 empty + !maskedSeed! + maskedDB = 128
 		
 		//String EM = ""; //Put the final answer here
 		System.out.println("B4 ANSWER:" + byteToHex(EM));
 		return byteToHex(EM);
+	}
+	
+	public byte[] xor(byte[] a, byte[] b){
+		byte[] xored = new byte[a.length];
+		for(int i = 0; i < xored.length; i++){
+			xored[i] = (byte) (a[i] ^ b[i]);
+		}
+		return xored;
 	}
 	
 	public String OAEP_decode(String EM){
