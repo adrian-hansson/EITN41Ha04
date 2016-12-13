@@ -43,7 +43,7 @@ public class B4 {
 		return bytesCombined;
 	}
 	
-	public void OAEP_encode(String M, String seed){
+	public String OAEP_encode(String M, String seed){
 		System.out.println("M to encode: "+M);
 		System.out.println("Seed used: "+seed);
 		byte[] bytesM = hexToByte(M);
@@ -110,10 +110,11 @@ public class B4 {
 		
 		//String EM = ""; //Put the final answer here
 		System.out.println("B4 ANSWER:" + byteToHex(EM));
+		return byteToHex(EM);
 	}
 	
-	public void OAEP_decode(String EM){
-		
+	public String OAEP_decode(String EM){
+		return "Decode not working";
 	}
 	
 	public static void main(String[] args){
