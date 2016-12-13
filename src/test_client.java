@@ -42,7 +42,7 @@ class Client {
 		int port = 1337;
 		Random rnd = new Random();
 		
-		String msg = "0123456789abcdef"; //TODO: replace this with the string you want to send
+		String msg = "404dfc45eab74833561f74adef08977b625007df"; //TODO: replace this with the string you want to send
 		
 		// the p shall be the one given in the manual
 		BigInteger p = new BigInteger("1234567890abcdef", 16);
