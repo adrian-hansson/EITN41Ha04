@@ -101,10 +101,10 @@ public class B4GUI {
 				String seed = fieldSeed.getText();
 				B4 b4 = new B4();
 				try{
-				String answer = b4.OAEP_encode(M, seed);
-				fieldOutput.setText(answer);
+					String answer = b4.OAEP_encode(M, seed);
+					fieldOutput.setText(answer);
 				}catch(Exception err){
-					err.printStackTrace();
+					System.out.println(err.toString());
 					fieldOutput.setText("An error occurred. See console.");
 				}
 			}

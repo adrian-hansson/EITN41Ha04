@@ -20,7 +20,6 @@ public class B3 {
 		byte[] bytesCombined = new byte[b1.length+b2.length];
 		System.arraycopy(b1, 0, bytesCombined, 0, b1.length);
 		System.arraycopy(b2, 0, bytesCombined, b1.length, b2.length);
-		//System.out.println(Arrays.toString(bytesCombined));
 		return bytesCombined;
 	}
 	
@@ -56,15 +55,6 @@ public class B3 {
 		return md.digest(arr);
 	}
 	
-	//SOURCE: http://stackoverflow.com/questions/4895523/java-string-to-sha1
-	public static String byteArrayToHexString(byte[] b) {
-	  String result = "";
-	  for (int i=0; i < b.length; i++) {
-	    result += Integer.toString( ( b[i] & 0xff ) + 0x100, 16).substring( 1 );
-	  }
-	  return result;
-	}
-	
 	public byte[] I2OSP(int counter, BigInteger xLen){
 		byte[] x = (new BigInteger(Integer.toString(counter))).toByteArray();
 		byte[] octetString = new byte[xLen.intValue()];
@@ -79,13 +69,11 @@ public class B3 {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//byte[] answerCut = Arrays.copyOfRange(answer, 0, maskLen.intValue());
 		String returnAnswer = byteToHex(answer);
 		System.out.println("ANSWER (maskLen bytes string): "+ returnAnswer);
 		return returnAnswer;
 	}
 
-	//https://tools.ietf.org/html/rfc8017#appendix-B.2.1
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		
