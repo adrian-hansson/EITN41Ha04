@@ -123,7 +123,7 @@ public class B4 {
 		System.out.println("seed: ");
 		String seed = scan.nextLine();
 		System.out.println("EM: ");
-		String EM = scan.nextLine();
+		String EM = scan.nextLine(); //use for decode
 		
 		B4 b4 = new B4();
 		//b4.OAEP_encode("c107782954829b34dc531c14b40e9ea482578f988b719497aa0687", "1e652ec152d0bfcd65190ffc604c0933d0423381");
