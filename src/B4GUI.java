@@ -104,6 +104,7 @@ public class B4GUI {
 				String answer = b4.OAEP_encode(M, seed);
 				fieldOutput.setText(answer);
 				}catch(Exception err){
+					err.printStackTrace();
 					fieldOutput.setText("An error occurred. See console.");
 				}
 			}

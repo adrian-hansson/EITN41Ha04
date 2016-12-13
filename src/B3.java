@@ -20,7 +20,7 @@ public class B3 {
 		byte[] bytesCombined = new byte[b1.length+b2.length];
 		System.arraycopy(b1, 0, bytesCombined, 0, b1.length);
 		System.arraycopy(b2, 0, bytesCombined, b1.length, b2.length);
-		System.out.println(Arrays.toString(bytesCombined));
+		//System.out.println(Arrays.toString(bytesCombined));
 		return bytesCombined;
 	}
 	
